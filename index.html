@@ -433,7 +433,7 @@
         
           <h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><p>Replicated state machine模型+ 优化的paxos+详细工程实现+简单理解</p>
 <ul>
-<li><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2>leader: 负责发起新的log写入，term下唯一，单个写入节点从而决定写入顺序，了解集群最新信息<br>follower：写入信息复制<br>candidate：leader失效后选举新leader的主动参选者<br>term:递增的逻辑时间id，可以和paxos的proposal id进行对应<br>log entry：数值的变动，entry形成一个有序的log，entry本身对应paxos的proposal<br>index：entry 在log的序号<br>committed: log entry复制达到多数节点，即完成共识<br><img src="/im-rinnin/images/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7_2023-04-23_%E4%B8%8B%E5%8D%883.30.56_1682235075997_0.png" alt="屏幕快照 2023-04-23 下午3.30.56.png"></li>
+<li><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2>leader: 负责发起新的log写入，term下唯一，单个写入节点从而决定写入顺序，了解集群最新信息<br>follower：写入信息复制<br>candidate：leader失效后选举新leader的主动参选者<br>term:递增的逻辑时间id，可以和paxos的proposal id进行对应<br>log entry：数值的变动，entry形成一个有序的log，entry本身对应paxos的proposal<br>index：entry 在log的序号<br>committed: log entry复制达到多数节点，即完成共识<br><img src="/images/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7_2023-04-23_%E4%B8%8B%E5%8D%883.30.56_1682235075997_0.png" alt="屏幕快照 2023-04-23 下午3.30.56.png"></li>
 </ul>
 <h2 id="关键流程"><a href="#关键流程" class="headerlink" title="关键流程"></a>关键流程</h2><h3 id="选举"><a href="#选举" class="headerlink" title="选举"></a>选举</h3>
           <!--noindex-->
