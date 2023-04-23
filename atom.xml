@@ -3,11 +3,11 @@
   <title>rinnin的小站</title>
   
   
-  <link href="https://im-rinnin.github.io/im-rinnin/atom.xml" rel="self"/>
+  <link href="https://blog.rinnin.cc/atom.xml" rel="self"/>
   
-  <link href="https://im-rinnin.github.io/im-rinnin/"/>
+  <link href="https://blog.rinnin.cc/"/>
   <updated>2023-04-23T09:13:18.699Z</updated>
-  <id>https://im-rinnin.github.io/im-rinnin/</id>
+  <id>https://blog.rinnin.cc/</id>
   
   <author>
     <name>rinnin</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>paxos 学习与思考</title>
-    <link href="https://im-rinnin.github.io/im-rinnin/2023/04/23/db___paxos___quick_learn/"/>
-    <id>https://im-rinnin.github.io/im-rinnin/2023/04/23/db___paxos___quick_learn/</id>
+    <link href="https://blog.rinnin.cc/2023/04/23/db___paxos___quick_learn/"/>
+    <id>https://blog.rinnin.cc/2023/04/23/db___paxos___quick_learn/</id>
     <published>2023-04-23T06:15:59.000Z</published>
     <updated>2023-04-23T09:13:18.699Z</updated>
     
@@ -37,18 +37,18 @@
     
     
     
-    <category term="paxos" scheme="https://im-rinnin.github.io/im-rinnin/tags/paxos/"/>
+    <category term="paxos" scheme="https://blog.rinnin.cc/tags/paxos/"/>
     
-    <category term="raft" scheme="https://im-rinnin.github.io/im-rinnin/tags/raft/"/>
+    <category term="raft" scheme="https://blog.rinnin.cc/tags/raft/"/>
     
-    <category term="consensus" scheme="https://im-rinnin.github.io/im-rinnin/tags/consensus/"/>
+    <category term="consensus" scheme="https://blog.rinnin.cc/tags/consensus/"/>
     
   </entry>
   
   <entry>
     <title>raft学习笔记</title>
-    <link href="https://im-rinnin.github.io/im-rinnin/2023/04/22/db___raft/"/>
-    <id>https://im-rinnin.github.io/im-rinnin/2023/04/22/db___raft/</id>
+    <link href="https://blog.rinnin.cc/2023/04/22/db___raft/"/>
+    <id>https://blog.rinnin.cc/2023/04/22/db___raft/</id>
     <published>2023-04-22T06:15:59.000Z</published>
     <updated>2023-04-23T09:13:18.702Z</updated>
     
@@ -64,9 +64,9 @@
     
     
     
-    <category term="raft" scheme="https://im-rinnin.github.io/im-rinnin/tags/raft/"/>
+    <category term="raft" scheme="https://blog.rinnin.cc/tags/raft/"/>
     
-    <category term="consensus" scheme="https://im-rinnin.github.io/im-rinnin/tags/consensus/"/>
+    <category term="consensus" scheme="https://blog.rinnin.cc/tags/consensus/"/>
     
   </entry>
   
