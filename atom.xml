@@ -6,7 +6,7 @@
   <link href="https://blog.rinnin.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.rinnin.cc/"/>
-  <updated>2023-05-03T09:38:28.036Z</updated>
+  <updated>2023-05-03T09:38:28.039Z</updated>
   <id>https://blog.rinnin.cc/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>春节回家记事</title>
+    <link href="https://blog.rinnin.cc/2023/05/03/%E5%A4%96%E5%A9%86/"/>
+    <id>https://blog.rinnin.cc/2023/05/03/%E5%A4%96%E5%A9%86/</id>
+    <published>2023-05-03T09:33:00.000Z</published>
+    <updated>2023-05-03T09:38:28.039Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="春节回家记事"><a href="#春节回家记事" class="headerlink" title="春节回家记事"></a>春节回家记事</h1><p>春节回家，外婆认知能力越来越差了，每天晚上睡觉家里所有的门都要反锁，大门还要用拐杖顶着，总是说楼上人偷她东西，给她下毒，电视机旁边的窗帘一直要拉着，害怕抗战剧打炮的画面会在窗户上反射把电视打坏了，真是哭笑不得，还总是说家里进小偷了，外公生前用的锤子扳手都被偷了，说什么外公走之前叮嘱她要保管好。人老糊涂了说的也听不太懂，反正家里人尽量就惯着，跟个小孩一样，不过好在生活还能自理</p><p>有时候想想人老了也是折磨，身体崩溃只是一方面，灵魂可能已经蜕化不成样子了，真是绝望的事情。</p><p>老家那边的老人基本上也没几个了，能自己下楼溜达的更少，加上疫情放开去世了不少,以前多好的一个厂办小区，现在工厂搬迁，年轻的都要走了，只剩下一些退休的老人，老一辈的小孩都在外面打工，没有年轻人的加入，这个承载了我20岁之前生活的小区，最终只会逐渐破败消失吧。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;春节回家记事&quot;&gt;&lt;a href=&quot;#春节回家记事&quot; class=&quot;headerlink&quot; title=&quot;春节回家记事&quot;&gt;&lt;/a&gt;春节回家记事&lt;/h1&gt;&lt;p&gt;春节回家，外婆认知能力越来越差了，每天晚上睡觉家里所有的门都要反锁，大门还要用拐杖顶着，总是说楼上人偷她东西</summary>
+      
+    
+    
+    
+    
+    <category term="生活" scheme="https://blog.rinnin.cc/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="胡思乱想" scheme="https://blog.rinnin.cc/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/"/>
+    
+    <category term="老人" scheme="https://blog.rinnin.cc/tags/%E8%80%81%E4%BA%BA/"/>
+    
+    <category term="春节" scheme="https://blog.rinnin.cc/tags/%E6%98%A5%E8%8A%82/"/>
+    
+  </entry>
   
   <entry>
     <title>paxos 学习与思考</title>
