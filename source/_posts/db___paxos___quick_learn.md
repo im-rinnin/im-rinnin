@@ -5,6 +5,7 @@ tags:
 - paxos
 - raft
 - consensus
+- 技术
 ---
 
 这里并不会完整描述paxos，只是记录重点和我的思考过程

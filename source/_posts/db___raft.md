@@ -4,6 +4,7 @@ date:  2023-4-22 14:15:59
 tags:
 - raft
 - consensus
+- 技术
 ---
 
 ## 核心
