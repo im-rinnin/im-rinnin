@@ -6,7 +6,7 @@
   <link href="https://blog.rinnin.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.rinnin.cc/"/>
-  <updated>2023-04-23T09:13:18.699Z</updated>
+  <updated>2023-05-03T09:38:28.036Z</updated>
   <id>https://blog.rinnin.cc/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.rinnin.cc/2023/04/23/db___paxos___quick_learn/"/>
     <id>https://blog.rinnin.cc/2023/04/23/db___paxos___quick_learn/</id>
     <published>2023-04-23T06:15:59.000Z</published>
-    <updated>2023-04-23T09:13:18.699Z</updated>
+    <updated>2023-05-03T09:38:28.036Z</updated>
     
     <content type="html"><![CDATA[<p>这里并不会完整描述paxos，只是记录重点和我的思考过程</p><h2 id="共识问题"><a href="#共识问题" class="headerlink" title="共识问题"></a>共识问题</h2><p>多个节点对某个值达成一致</p><p>解决方案的核心思想：如何选定的数值在达到多数节点后，不再改变，至于如何达到多数不重要<br>上述问题等同于：在发现数值在达到多数节点后，proposer只发起这个数值proposal<br>分解为两个问题</p><ol><li>如何读到这个数值并作为proposal的数值</li><li>由于乱序，acceptor可能会接受到之前的proposal，如何解决</li></ol><p>问题1</p><p>通过多数读，保证能读到，但是也可能读到另外没有达到多数的数值，这个问题可以通过prepare 阶段解决，可以通过反证法，如果 a 达到多数，b是少数，且 b id&gt;a id,那么在prepare阶段，a和b一定有重叠acceptor接受 b id然后再接受a id，违背了prepare 忽视id小于当前正在进行proposal的id这个行为。</p><p>问题2<br>acceptor忽略proposal id小于当前接受数值的id</p><p>实际上，id唯一加上prepare阶段，proposer读取多数节点选择id最大这两个行为，形成一种id偏序关系，这种偏序关系，使得如果 proposal a id &gt; b id,则 a 的取值有可能是通过prepare阶段读到的b，而不可能反过来。这种关系保证集群的信息不会因为乱序倒退，出现a先达到多数，然后又变成其他值的情况。从而保证算法的正确性，算法的推进性（progress）则需要通过选举成功保证</p><p>另外需要注意的是,这里的多数指的是某次proposal形成了多数，而不是两次proposal，使用同一个数值形成的多数，wiki上有个例子 <a href="https://en.wikipedia.org/wiki/Paxos_(computer_science)#Basic_Paxos">wiki paxos</a> Basic Paxos where a multi-identifier majority is insufficient</p><p>同理，raft里要求来自不同term的log entry达到多数不能算达到多数也是一样的原因（raft 论文 5.4.2 Committing entries from previous terms）</p><h3 id="核心规则"><a href="#核心规则" class="headerlink" title="核心规则"></a>核心规则</h3><ol><li>proposal id 唯一</li><li>acceptor不接受比当前prepare 阶段的id小或者比当前取值的proposal id小的proposal</li><li>proposer先读取多数节点，选取id最大的proposal的取值（或者没有，则可以选用任意取值），作为第二阶段的proposal的取值</li></ol><p>考虑到老爷子说过世界上只有一个共识算法，所以说所有共识算法都是上述步骤的演化</p><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>paxos-simple 论文，感觉写的不是特别好<br><a href="https://en.wikipedia.org/wiki/Paxos_(computer_science)">wiki paxos</a>从开头到basic paxos部分，这里对paxos的描述写的比论文清洗</p>]]></content>
     
@@ -50,7 +50,7 @@
     <link href="https://blog.rinnin.cc/2023/04/22/db___raft/"/>
     <id>https://blog.rinnin.cc/2023/04/22/db___raft/</id>
     <published>2023-04-22T06:15:59.000Z</published>
-    <updated>2023-04-23T09:13:18.702Z</updated>
+    <updated>2023-05-03T09:38:28.041Z</updated>
     
     <content type="html"><![CDATA[<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><p>Replicated state machine模型+ 优化的paxos+详细工程实现+简单理解</p><ul><li><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2>leader: 负责发起新的log写入，term下唯一，单个写入节点从而决定写入顺序，了解集群最新信息<br>follower：写入信息复制<br>candidate：leader失效后选举新leader的主动参选者<br>term:递增的逻辑时间id，可以和paxos的proposal id进行对应<br>log entry：数值的变动，entry形成一个有序的log，entry本身对应paxos的proposal<br>index：entry 在log的序号<br>committed: log entry复制达到多数节点，即完成共识<br><img src="/images/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7_2023-04-23_%E4%B8%8B%E5%8D%883.30.56_1682235075997_0.png" alt="屏幕快照 2023-04-23 下午3.30.56.png"></li></ul><h2 id="关键流程"><a href="#关键流程" class="headerlink" title="关键流程"></a>关键流程</h2><h3 id="选举"><a href="#选举" class="headerlink" title="选举"></a>选举</h3><p>通过超时机制，保证term下最多有一个leader<br>限制条件，只会投一次票，只给log比自己新的candidate投票</p><h3 id="log复制"><a href="#log复制" class="headerlink" title="log复制"></a>log复制</h3><p>log 由leader 复制到每个follower<br>leader的log只会追加不会修改<br>复制过程：leader找到最后一条相同的log ，从这里开始进行复制</p><h3 id="memership-转移"><a href="#memership-转移" class="headerlink" title="memership 转移"></a>memership 转移</h3><p>通过加入一个中间阶段配置作为过度</p><h3 id="log-compaction"><a href="#log-compaction" class="headerlink" title="log compaction"></a>log compaction</h3><p>避免log太长，使用snapshot进行压缩，把多个log压缩成一个状态，去掉冗余的log<br>不是算法的核心，这里省略</p><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>committed 的entry不会再改变（共识算法的核心定义）,通过选举的条件和leader不会修改自己的entry来保证<br>committed 的entry之前的entry不会再改变,实现同上<br>相同index和term的log entry相同，log复制的机制来保证</p><h2 id="和paxos对比"><a href="#和paxos对比" class="headerlink" title="和paxos对比"></a>和paxos对比</h2><p>term就是proposal id,唯一<br>log entry就是proposal,follow不接受比当前小的proposal<br>选举的限制条件，只给比自己log更新的candidate投票，也是paxos prepare阶段，获取最大的proposal id并用它的数值作为后续proposal的数值</p><p>所以raft 的内核还是逃不了paxos那一套</p><h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>文中提到为了方便理解，很多设计都偏向简单，比如超时实现leader选举，单一leader写入数据，简单数据流向（client-&gt;leader-&gt;follower）,leader数据不会修改<br>理解paxos 是理解raft的基础，知道为什么要这么做，那些步骤可以优化而不会破坏paxos的核心规则<br>文中提到作者思考过很多其他方案，感觉看论文就是这样，只能看到最后一个结果，但是背后的动机，想要正在搞清楚需要花很多时间去研究相关的背景材料。光是看一篇只能达到能用但是不一定能完全理解的程度</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>raft paper In Search of an Understandable Consensus Algorithm<br>raft phd论文 CONSENSUS: BRIDGING THEORY AND PRACTICE 有一些tla证明<br>paxos 论文</p>]]></content>
     
