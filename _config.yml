@@ -28,7 +28,7 @@ archives_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: "google52db3442ccdd3d2f.html"
+skip_render: "google52db3442ccdd3d2f.html,robots.txt"
 
 
 # Writing
