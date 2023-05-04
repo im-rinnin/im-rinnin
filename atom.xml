@@ -61,9 +61,9 @@
     
     <category term="胡思乱想" scheme="https://blog.rinnin.cc/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/"/>
     
-    <category term="春节" scheme="https://blog.rinnin.cc/tags/%E6%98%A5%E8%8A%82/"/>
-    
     <category term="老家" scheme="https://blog.rinnin.cc/tags/%E8%80%81%E5%AE%B6/"/>
+    
+    <category term="春节" scheme="https://blog.rinnin.cc/tags/%E6%98%A5%E8%8A%82/"/>
     
   </entry>
   
@@ -88,11 +88,11 @@
     
     
     
-    <category term="paxos" scheme="https://blog.rinnin.cc/tags/paxos/"/>
-    
     <category term="raft" scheme="https://blog.rinnin.cc/tags/raft/"/>
     
     <category term="consensus" scheme="https://blog.rinnin.cc/tags/consensus/"/>
+    
+    <category term="paxos" scheme="https://blog.rinnin.cc/tags/paxos/"/>
     
     <category term="技术" scheme="https://blog.rinnin.cc/tags/%E6%8A%80%E6%9C%AF/"/>
     
