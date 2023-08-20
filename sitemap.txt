@@ -1,9 +1,9 @@
-https://blog.rinnin.cc/google52db3442ccdd3d2f.html
 https://blog.rinnin.cc/2023/04/21/blog___%E7%94%9F%E6%B4%BB%E7%9A%84%E6%84%8F%E4%B9%89%20%E7%82%8E%E6%8B%B3%20RPG/
 https://blog.rinnin.cc/2023/05/03/blog___%E7%94%9F%E6%B4%BB%E7%9A%84%E6%84%8F%E4%B9%89%20%E7%82%8E%E6%8B%B3%20%E4%BB%AA%E5%BC%8F%E6%84%9F%20RPG/
 https://blog.rinnin.cc/2023/04/22/db___raft/
 https://blog.rinnin.cc/2023/04/23/db___paxos___quick_learn/
 https://blog.rinnin.cc/2023/05/02/blog___%E6%98%A5%E8%8A%82%E8%AE%B0%E4%BA%8B/
+https://blog.rinnin.cc/google52db3442ccdd3d2f.html
 https://blog.rinnin.cc/about/index.html
 https://blog.rinnin.cc/archives/index.html
 https://blog.rinnin.cc/tags/index.html
